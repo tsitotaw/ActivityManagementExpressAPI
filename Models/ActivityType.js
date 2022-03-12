@@ -14,7 +14,6 @@ const activityTypeScema = new Schema(
             name: String,
             code: String,
             uom: String,
-            quantity: Number,
           },
         ],
       },

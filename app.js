@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 
 const userController = require("./Controllers/UserController");
+const activityRouter = require("./Router/ActivityRouter");
+
 const mongoose = require("mongoose");
 
 const app = express();
@@ -24,19 +26,14 @@ app.get("/", (req, res) => {
   });
 });
 
-app.get("/api/activities", tokenVerifier.verify, (req, res) => {
-  res.json({
-    success: true,
-    data: {
-      secret: `Work In Progress`,
-    },
-  });
-});
+// app.get("/api/activities", tokenVerifier.verify, activityRouter);
+app.use("/api/activities", activityRouter);
 
 app.post("/api/users/login", userController.login);
 app.post("/api/users/signup", userController.signUp);
+const DBURL = "mongodb://" + HOST + ":" + DB_PORT + "/activity_db"; // + DATABASE;
 
-mongoose.connect("mongodb://" + HOST + ":" + DB_PORT + "/" + DATABASE).then(
+mongoose.connect(DBURL).then(
   () => {
     app.listen(API_PORT, () => {
       console.log(`Activity Tracking App listening on PORT ${API_PORT}`);
