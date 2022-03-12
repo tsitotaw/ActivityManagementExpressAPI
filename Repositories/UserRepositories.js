@@ -1,7 +1,6 @@
 const User = require("../Models/User");
 
 const getUserByUserName = async (name) => {
-  // console.log(name);
   return User.findOne({ username: name }).then((data) => {
     return data;
   });

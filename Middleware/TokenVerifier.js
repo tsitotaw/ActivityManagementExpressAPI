@@ -4,9 +4,6 @@ const verify = (req, res, next) => {
     res.sendStatus(403);
     return false;
   }
-  // if (typeof req.headers.authorization === "undefined") {
-  //   res.sendStatus(403);
-  // }
   let token = req.headers["authorization"].split(" ")[1];
   if (!token) {
     res.sendStatus(403);
