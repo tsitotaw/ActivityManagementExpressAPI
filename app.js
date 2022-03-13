@@ -11,7 +11,7 @@ const app = express();
 const HOST = process.env.DB_HOST | "localhost";
 const DB_PORT = process.env.DB_PORT | 27017;
 const API_PORT = process.env.API_PORT | 5000;
-const DATABASE = process.env.TODO_DATABASE | "activity_db";
+const DATABASE = process.env.ACTIVITY_DATABASE | "activity_db";
 
 const tokenVerifier = require("./Middleware/TokenVerifier");
 
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 // app.get("/api/activities", tokenVerifier.verify, activityRouter);
-app.use("/api/activities", activityRouter);
+app.use("/api/activities", tokenVerifier.verify, activityRouter);
 
 app.post("/api/users/login", userController.login);
 app.post("/api/users/signup", userController.signUp);
