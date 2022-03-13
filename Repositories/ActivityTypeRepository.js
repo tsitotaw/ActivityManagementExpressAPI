@@ -91,6 +91,15 @@ const addActivitySubCategory = async (subcategory, categoryId, typeId) => {
   );
 };
 
+//////// get Categories of activities ////////
+const getActivityCategories = async () => {
+  return await ActivityType.distinct(
+    "categories"
+  );
+};
+
+
+
 module.exports = {
   addActivityType,
   updateActivityType,
@@ -100,4 +109,6 @@ module.exports = {
   getActivityTypeById,
   getActivityCategoryByTypeId,
   getActivitySubCategoryByTypeAndCategoryId,
+  ////
+  getActivityCategories,
 };
