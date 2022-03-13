@@ -9,6 +9,16 @@ const postActivityType = async (req, res) => {
   });
 };
 
+const updateActivityType = async (req, res) => {
+  let { id } = req.params;
+  let data = await activityService.updateActivityType(req.body, id);
+
+  res.json({
+    success: true,
+    data,
+  });
+};
+
 const postActivityCategory = async (req, res) => {
   let { id } = req.params;
   let category = req.body;
@@ -84,6 +94,7 @@ module.exports = {
   getActivityType,
   getActivityTypeById,
   postActivityType,
+  updateActivityType,
   postActivityCategory,
   postActivitySubCategory,
   getActivityCategoryById,

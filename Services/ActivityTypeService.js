@@ -3,12 +3,15 @@ const activityTypeRepository = require("./../Repositories/ActivityTypeRepository
 const addActivityType = async (type) => {
   return await activityTypeRepository.addActivityType(type);
 };
+const updateActivityType = async (type, id) => {
+  return await activityTypeRepository.updateActivityType(type, id);
+};
 
 const addActivityCategory = async (category, typeId) => {
   return await activityTypeRepository.addActivityCategory(category, typeId);
 };
 
-const addActivitySubCategory = async (subcategory, typeId, categoryId) => {
+const addActivitySubCategory = async (subcategory, categoryId, typeId) => {
   return await activityTypeRepository.addActivitySubCategory(
     subcategory,
     typeId,
@@ -40,6 +43,7 @@ const getActivitySubCategoryByTypeAndCategoryId = async (
 
 module.exports = {
   addActivityType,
+  updateActivityType,
   addActivityCategory,
   addActivitySubCategory,
   getActivityType,

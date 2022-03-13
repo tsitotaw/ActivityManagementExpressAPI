@@ -4,6 +4,7 @@ const activityController = require("./../Controllers/ActivityController");
 activityRouter.get("/", activityController.getActivityType);
 activityRouter.post("/", activityController.postActivityType);
 activityRouter.post("/:id/category", activityController.postActivityCategory);
+activityRouter.put("/:id", activityController.updateActivityType);
 activityRouter.post(
   "/:id/category/:categoryid/subcategory",
   activityController.postActivitySubCategory
