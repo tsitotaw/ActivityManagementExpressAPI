@@ -11,6 +11,14 @@ const addActivityCategory = async (category, typeId) => {
   return await activityTypeRepository.addActivityCategory(category, typeId);
 };
 
+const updateActivityCategory = async (category, typeId, categoryId) => {
+  return await activityTypeRepository.updateActivityCategory(
+    category,
+    typeId,
+    categoryId
+  );
+};
+
 const addActivitySubCategory = async (subcategory, categoryId, typeId) => {
   return await activityTypeRepository.addActivitySubCategory(
     subcategory,
@@ -40,15 +48,14 @@ const getActivitySubCategoryByTypeAndCategoryId = async (
     categoryId
   );
 };
-const getActivitySubCategory=async()=>{
-    return await activityTypeRepository.getActivityType();
-}
+const getActivitySubCategory = async () => {
+  return await activityTypeRepository.getActivityType();
+};
 
 ///////////////
 const getActivityCategories = async () => {
   return await activityTypeRepository.getActivityCategories();
 };
-
 
 module.exports = {
   addActivityType,
@@ -61,6 +68,6 @@ module.exports = {
   getActivitySubCategoryByTypeAndCategoryId,
   getActivitySubCategory,
   /////////////
-  getActivityCategories
-
+  getActivityCategories,
+  updateActivityCategory,
 };

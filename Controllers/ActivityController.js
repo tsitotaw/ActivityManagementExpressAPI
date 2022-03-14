@@ -30,6 +30,21 @@ const postActivityCategory = async (req, res) => {
   });
 };
 
+const updateActivityCategory = async (req, res) => {
+  let { id, categoryid } = req.params;
+  let category = req.body;
+  let data = await activityService.updateActivityCategory(
+    category,
+    id,
+    categoryid
+  );
+
+  res.json({
+    success: true,
+    data,
+  });
+};
+
 const postActivitySubCategory = async (req, res) => {
   let { id, categoryid } = req.params;
   let subcategory = req.body;
@@ -89,13 +104,12 @@ const getActivitySubCategoryById = async (req, res) => {
     data,
   });
 };
-const getActivitySubCategory=async()=>{
-  let data =await activityService.getActivitySubCategory();
-}
+const getActivitySubCategory = async () => {
+  let data = await activityService.getActivitySubCategory();
+};
 
 ///////// Get all lists of Categories///////
-const getActivityCategories = async (req, res) => { 
-
+const getActivityCategories = async (req, res) => {
   let data = await activityService.getActivityCategories();
 
   res.json({
@@ -103,7 +117,6 @@ const getActivityCategories = async (req, res) => {
     data,
   });
 };
-
 
 module.exports = {
   getActivityType,
@@ -116,5 +129,6 @@ module.exports = {
   getActivitySubCategoryById,
   getActivitySubCategory,
   ////
-  getActivityCategories
+  getActivityCategories,
+  updateActivityCategory,
 };
