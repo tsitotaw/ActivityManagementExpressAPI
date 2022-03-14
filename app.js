@@ -31,8 +31,8 @@ app.use("/api/activities", tokenVerifier.verify, activityRouter);
 
 app.post("/api/users/login", userController.login);
 app.post("/api/users/signup", userController.signUp);
-const DBURL = "mongodb://" + HOST + ":" + DB_PORT + "/activity_db"; // + DATABASE;
-
+const DBURL = "mongodb://localhost:" + DB_PORT + "/activity_db"; // + DATABASE;
+console.log(DBURL);
 mongoose.connect(DBURL).then(
   () => {
     app.listen(API_PORT, () => {
@@ -43,3 +43,5 @@ mongoose.connect(DBURL).then(
     console.log(err);
   }
 );
+
+// check

@@ -9,11 +9,15 @@ activityRouter.post(
   "/:id/category/:categoryid/subcategory",
   activityController.postActivitySubCategory
 );
+////////////////////////////
+activityRouter.get("/categories", activityController.getActivityCategories);
+////////////////////////////
 activityRouter.get("/:id", activityController.getActivityTypeById);
 activityRouter.get("/:id/category", activityController.getActivityCategoryById);
 activityRouter.get(
   "/:id/category/:categoryid",
   activityController.getActivitySubCategoryById
 );
+
 
 module.exports = activityRouter;

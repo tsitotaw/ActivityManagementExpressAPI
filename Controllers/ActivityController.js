@@ -90,6 +90,19 @@ const getActivitySubCategoryById = async (req, res) => {
   });
 };
 
+
+///////// Get all lists of Categories///////
+const getActivityCategories = async (req, res) => { 
+
+  let data = await activityService.getActivityCategories();
+
+  res.json({
+    success: true,
+    data,
+  });
+};
+
+
 module.exports = {
   getActivityType,
   getActivityTypeById,
@@ -99,4 +112,6 @@ module.exports = {
   postActivitySubCategory,
   getActivityCategoryById,
   getActivitySubCategoryById,
+  ////
+  getActivityCategories
 };
