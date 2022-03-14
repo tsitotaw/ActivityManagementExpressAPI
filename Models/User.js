@@ -18,9 +18,6 @@ const userSchema = new Schema(
     lastName: {
       type: String,
     },
-    email: {
-      type: String,
-    },
     address: {
       type: String,
     },
