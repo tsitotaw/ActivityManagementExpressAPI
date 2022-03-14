@@ -1,7 +1,7 @@
 const User = require("../Models/User");
 
 const getUserByUserName = async (name) => {
-  return User.findOne({ username: name }).then((data) => {
+  return User.findOne({ userName: name }).then((data) => {
     return data;
   });
 };

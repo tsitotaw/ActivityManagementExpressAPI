@@ -2,7 +2,7 @@ const userService = require("./../Services/UserService");
 
 const login = async (req, res) => {
   let user = req.body;
-  let authToken = await userService.authenticate(user.username, user.password);
+  let authToken = await userService.authenticate(user.userName, user.password);
 
   if (authToken != null) {
     res.json({

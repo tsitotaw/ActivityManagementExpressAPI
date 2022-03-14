@@ -18,7 +18,6 @@ const hashPassword = async (password) => {
 
 const signUp = (user) => {
   return userRepository.saveUser(user).then((data) => {
-    console.log("New Yser - " + data);
     return jwt.sign(data.toJSON(), secretKey);
   });
 };
@@ -33,9 +32,8 @@ const authenticate = (username, password) => {
     if (data == undefined) {
       return false;
     }
-    console.log("JWT" + data.password);
-    console.log("user" + password);
     let isSamePassword = await bcrypt.compare(password, data.password);
+    console.log(isSamePassword);
     if (!isSamePassword) return false;
     return jwt.sign(data.toJSON(), secretKey);
   });
