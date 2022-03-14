@@ -11,6 +11,19 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+    },
+    email: {
+      type: String,
+    },
+    address: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
