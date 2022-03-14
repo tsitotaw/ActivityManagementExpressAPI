@@ -3,6 +3,7 @@ const activityController = require("./../Controllers/ActivityController");
 
 activityRouter.get("/", activityController.getActivityType);
 activityRouter.post("/", activityController.postActivityType);
+
 activityRouter.post("/:id/category", activityController.postActivityCategory);
 activityRouter.put("/:id", activityController.updateActivityType);
 activityRouter.post(
@@ -15,5 +16,6 @@ activityRouter.get(
   "/:id/category/:categoryid",
   activityController.getActivitySubCategoryById
 );
+activityRouter.get("/:id/category/:id/subcatagory",activityController.getActivityType);
 
 module.exports = activityRouter;

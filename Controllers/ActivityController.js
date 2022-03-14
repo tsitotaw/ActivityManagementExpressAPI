@@ -89,7 +89,13 @@ const getActivitySubCategoryById = async (req, res) => {
     data,
   });
 };
-
+const getActivitySubCategory=async()=>{
+  let data =await activityService.getActivitySubCategory();
+  res.json({
+    success: true,
+    data,
+  });
+}
 module.exports = {
   getActivityType,
   getActivityTypeById,
@@ -99,4 +105,5 @@ module.exports = {
   postActivitySubCategory,
   getActivityCategoryById,
   getActivitySubCategoryById,
+  getActivitySubCategory,
 };

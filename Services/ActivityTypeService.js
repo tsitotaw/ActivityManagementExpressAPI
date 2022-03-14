@@ -40,6 +40,9 @@ const getActivitySubCategoryByTypeAndCategoryId = async (
     categoryId
   );
 };
+const getActivitySubCategory=async()=>{
+    return await activityTypeRepository.getActivityType();
+}
 
 module.exports = {
   addActivityType,
@@ -50,4 +53,5 @@ module.exports = {
   getActivityTypeById,
   getActivityCategoryByTypeId,
   getActivitySubCategoryByTypeAndCategoryId,
+  getActivitySubCategory,
 };

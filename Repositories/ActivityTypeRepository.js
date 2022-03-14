@@ -71,7 +71,7 @@ const addActivityCategory = async (category, typeId) => {
   );
 };
 
-const addActivitySubCategory = async (subcategory, categoryId, typeId) => {
+const addActivitySubCategory = async (subcategory, typeId, categoryId) => {
   return await ActivityType.updateOne(
     {
       _id: typeId,
@@ -90,7 +90,9 @@ const addActivitySubCategory = async (subcategory, categoryId, typeId) => {
     }
   );
 };
-
+const getActivitySubCategory= async () =>{
+  return await ActivityType.find();
+}
 module.exports = {
   addActivityType,
   updateActivityType,
@@ -100,4 +102,5 @@ module.exports = {
   getActivityTypeById,
   getActivityCategoryByTypeId,
   getActivitySubCategoryByTypeAndCategoryId,
+  getActivitySubCategory,
 };
