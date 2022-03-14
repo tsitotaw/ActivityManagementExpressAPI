@@ -46,7 +46,13 @@ const postActivitySubCategory = async (req, res) => {
 };
 
 const getActivityType = async (req, res) => {
-  let data = await activityService.getActivityType();
+  let { name } = req.query;
+  let data;
+  if (name != "" && name != undefined)
+    data = await activityService.getActivityTypeByName(name);
+  else {
+    data = await activityService.getActivityType();
+  }
 
   res.json({
     success: true,

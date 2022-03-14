@@ -8,6 +8,12 @@ const getActivityTypeById = async (typeId) => {
   return await ActivityType.find({ _id: typeId });
 };
 
+const getActivityTypeByName = async (name) => {
+  return await ActivityType.find({
+    name: { $regex: name, $options: "i" },
+  });
+};
+
 const getActivityCategoryByTypeId = async (typeId) => {
   return await ActivityType.find(
     {
@@ -44,20 +50,6 @@ const getActivitySubCategoryByTypeAndCategoryId = async (
 const addActivityType = async (type) => {
   return await ActivityType.create(type);
 };
-
-const updateActivityType = async (type, id) => {
-  return await ActivityType.updateOne(
-    {
-      _id: id,
-    },
-    {
-      $set: {
-        name: type.name,
-        code: type.code,
-      },
-    }
-  );
-};
 const addActivityCategory = async (category, typeId) => {
   return await ActivityType.updateOne(
     {
@@ -93,11 +85,11 @@ const addActivitySubCategory = async (subcategory, categoryId, typeId) => {
 
 module.exports = {
   addActivityType,
-  updateActivityType,
   addActivityCategory,
   addActivitySubCategory,
   getActivityType,
   getActivityTypeById,
   getActivityCategoryByTypeId,
   getActivitySubCategoryByTypeAndCategoryId,
+  getActivityTypeByName,
 };
