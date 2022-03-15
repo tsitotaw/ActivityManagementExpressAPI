@@ -19,6 +19,15 @@ const updateActivityCategory = async (category, typeId, categoryId) => {
   );
 };
 
+const updateActivitySubCategory = async (data, typeId, categoryId, subcategoryId) => {
+  return await activityTypeRepository.updateActivitySubCategory(
+    data,
+    typeId,
+    categoryId,
+    subcategoryId
+  );
+};
+
 const addActivitySubCategory = async (subcategory, categoryId, typeId) => {
   return await activityTypeRepository.addActivitySubCategory(
     subcategory,
@@ -70,4 +79,5 @@ module.exports = {
   /////////////
   getActivityCategories,
   updateActivityCategory,
+  updateActivitySubCategory
 };

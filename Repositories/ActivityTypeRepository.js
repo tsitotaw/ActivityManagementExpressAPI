@@ -112,6 +112,30 @@ const updateActivityCategory = async (category, typeId, categoryId) => {
     }
   );
 };
+const updateActivitySubCategory = async (subCategory, typeId, categoryId, subcategoryId) => {
+  return await ActivityType.updateOne(
+    {
+      _id: typeId,
+    },
+    {
+      $set: {
+        "categories.$[c].subcategories.$[s].name": subCategory.name,
+        "categories.$[c].subcategories.$[s].code": subCategory.code,
+        "categories.$[c].subcategories.$[s].uom": subCategory.uom,
+      },
+    },
+    {
+      arrayFilters: [
+        {
+          "c._id": categoryId
+        },
+        {
+          "s._id":subcategoryId
+        }
+      ],
+    }
+  );
+};
 const getActivitySubCategory = async () => {
   return await ActivityType.find();
 };
@@ -134,4 +158,5 @@ module.exports = {
   ////
   getActivityCategories,
   updateActivityCategory,
+  updateActivitySubCategory
 };

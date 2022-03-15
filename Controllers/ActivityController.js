@@ -45,6 +45,22 @@ const updateActivityCategory = async (req, res) => {
   });
 };
 
+const updateActivitySubCategory = async (req, res) => {
+  let { id, categoryid, subcategoryid } = req.params;
+  let data = req.body;
+  let result = await activityService.updateActivityCategory(
+    data,
+    id,
+    categoryid,
+    subcategoryid
+  );
+
+  res.json({
+    success: true,
+    result,
+  });
+};
+
 const postActivitySubCategory = async (req, res) => {
   let { id, categoryid } = req.params;
   let subcategory = req.body;
@@ -131,4 +147,5 @@ module.exports = {
   ////
   getActivityCategories,
   updateActivityCategory,
+  updateActivitySubCategory
 };
