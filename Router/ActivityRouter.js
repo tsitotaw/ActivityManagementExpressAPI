@@ -10,6 +10,10 @@ activityRouter.put(
   "/:id/category/:categoryid",
   activityController.updateActivityCategory
 );
+activityRouter.put(
+  "/:id/category/:categoryid/subcategory/:subcategoryid",
+  activityController.updateActivitySubCategory
+);
 activityRouter.post(
   "/:id/category/:categoryid/subcategory",
   activityController.postActivitySubCategory
