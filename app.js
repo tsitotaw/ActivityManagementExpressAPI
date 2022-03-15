@@ -3,6 +3,7 @@ const cors = require("cors");
 
 const userController = require("./Controllers/UserController");
 const activityRouter = require("./Router/ActivityRouter");
+const activityTrackingRouter = require("./Router/ActivityTrackingRouter");
 
 const mongoose = require("mongoose");
 
@@ -28,12 +29,12 @@ app.get("/", (req, res) => {
 
 // app.get("/api/activities", tokenVerifier.verify, activityRouter);
 app.use("/api/activities", tokenVerifier.verify, activityRouter);
+app.use("/api/trackings", tokenVerifier.verify, activityTrackingRouter);
 
 app.post("/api/users/login", userController.login);
 app.post("/api/users/signup", userController.signUp);
 const DBURL = "mongodb://localhost:" + DB_PORT + "/activity_db"; // + DATABASE;
 const test = "";
-
 
 console.log(DBURL);
 mongoose.connect(DBURL).then(
