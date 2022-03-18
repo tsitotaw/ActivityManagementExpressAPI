@@ -8,6 +8,11 @@ const getActivityTypeById = async (typeId) => {
   return await ActivityType.find({ _id: typeId });
 };
 
+const getActivityTypeByName = async (name) => {
+  console.log("Name triggered");
+  return await ActivityType.find({ name: new RegExp("^" + name, "i") });
+};
+
 const getActivityCategoryByTypeId = async (typeId) => {
   return await ActivityType.find(
     {
@@ -112,7 +117,12 @@ const updateActivityCategory = async (category, typeId, categoryId) => {
     }
   );
 };
-const updateActivitySubCategory = async (subCategory, typeId, categoryId, subcategoryId) => {
+const updateActivitySubCategory = async (
+  subCategory,
+  typeId,
+  categoryId,
+  subcategoryId
+) => {
   return await ActivityType.updateOne(
     {
       _id: typeId,
@@ -127,11 +137,11 @@ const updateActivitySubCategory = async (subCategory, typeId, categoryId, subcat
     {
       arrayFilters: [
         {
-          "c._id": categoryId
+          "c._id": categoryId,
         },
         {
-          "s._id":subcategoryId
-        }
+          "s._id": subcategoryId,
+        },
       ],
     }
   );
@@ -152,11 +162,12 @@ module.exports = {
   addActivitySubCategory,
   getActivityType,
   getActivityTypeById,
+  getActivityTypeByName,
   getActivityCategoryByTypeId,
   getActivitySubCategoryByTypeAndCategoryId,
   getActivitySubCategory,
   ////
   getActivityCategories,
   updateActivityCategory,
-  updateActivitySubCategory
+  updateActivitySubCategory,
 };

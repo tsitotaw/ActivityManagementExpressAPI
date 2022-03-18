@@ -2,6 +2,7 @@ const activityRouter = require("express").Router();
 const activityController = require("./../Controllers/ActivityController");
 
 activityRouter.get("/", activityController.getActivityType);
+activityRouter.get("/?name", activityController.getActivityTypeByName);
 activityRouter.post("/", activityController.postActivityType);
 
 activityRouter.post("/:id/category", activityController.postActivityCategory);

@@ -77,7 +77,13 @@ const postActivitySubCategory = async (req, res) => {
 };
 
 const getActivityType = async (req, res) => {
-  let data = await activityService.getActivityType();
+  let { name } = req.query;
+  let data = "";
+  if (name == "") {
+    data = await activityService.getActivityType();
+  } else {
+    data = await activityService.getActivityTypeByName(name);
+  }
 
   res.json({
     success: true,
@@ -89,6 +95,17 @@ const getActivityTypeById = async (req, res) => {
   let { id } = req.params;
 
   let data = await activityService.getActivityTypeById(id);
+
+  res.json({
+    success: true,
+    data,
+  });
+};
+
+const getActivityTypeByName = async (req, res) => {
+  let { name } = req.query;
+  console.log("Name triggered");
+  let data = await activityService.getActivityTypeByName(name);
 
   res.json({
     success: true,
@@ -147,5 +164,6 @@ module.exports = {
   ////
   getActivityCategories,
   updateActivityCategory,
-  updateActivitySubCategory
+  updateActivitySubCategory,
+  getActivityTypeByName,
 };
