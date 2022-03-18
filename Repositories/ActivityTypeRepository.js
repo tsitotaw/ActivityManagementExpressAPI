@@ -9,7 +9,6 @@ const getActivityTypeById = async (typeId) => {
 };
 
 const getActivityTypeByName = async (name) => {
-  console.log("Name triggered");
   return await ActivityType.find({ name: new RegExp("^" + name, "i") });
 };
 

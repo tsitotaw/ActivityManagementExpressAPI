@@ -79,7 +79,8 @@ const postActivitySubCategory = async (req, res) => {
 const getActivityType = async (req, res) => {
   let { name } = req.query;
   let data = "";
-  if (name == "") {
+  console.log("Name triggered", name);
+  if (name == "" || name == undefined) {
     data = await activityService.getActivityType();
   } else {
     data = await activityService.getActivityTypeByName(name);
